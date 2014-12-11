@@ -1,0 +1,74 @@
+<%- include layouts/header.ejs %>
+
+
+<div class="page-data">
+ 
+                 
+      
+      <div class="data-table">
+          <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">No</th>
+                <th>reply</th>
+                <th>rate</th>
+               
+               
+               <th>review</th>
+                <th width="150px">Date Asked</th>
+                 
+                <th>User</th>
+                <th width="120px">Action</th>
+            </tr>
+                               
+                <% if(data.length){ 
+                                
+	                for(var i = 0;i < data.length;i++) { %>
+	                 
+	                <tr>
+	                    <td><%=(i+1)%></td>
+	                    <td class="question" style="overflow:hidden; max-width:300px;"><%=data[i].reply%></td>
+	                    <td class="question" style="overflow:hidden; max-width:300px;"><%=data[i].rate%></td>
+	                    
+	                    
+	                    
+	                    <% if(data[i].review != null){ %>
+	                    <td class="answer" ><%=data[i].review%></td>
+	                    <% }else{%>
+	                    <td class="answer" >No answer</td>
+	                    <% }%>
+	                    <td><%
+	                    	var d = data[i].dateModified;
+						    %>
+						<%=((d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds())
+	                    %></td>
+	                    <% if(data[i].anonymous == 0){ %>
+	                    <td><%=data[i].userid%></td>
+	                    <% }else{%>
+	                    <td>Anonymous</td>
+	                    <% }%>
+	                    <td align="center" padding="30">
+	                    <div style="padding:10px;">
+	                    	<% if(data[i].userid == "009874826") { %>
+	                        <a class="a-inside edit" href="../queries/reply/<%=data[i].id%>">reply</a>
+	                        <br>
+	                        <br>
+	                        <a class="a-inside delete" href="../queries/delete/<%=data[i].id%>">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
+	                        <% } else {%>
+	                        <a class="viewButton" href="../queries/view_answer/<%=data[i].id%>">&nbsp;&nbsp;&nbsp;View&nbsp;&nbsp;&nbsp;</a>
+	                        <% }%>
+	                    </div>
+	                    </td>
+	                </tr>
+	            
+	           <% }    
+               }else{ %>
+                 <tr>
+                    <td colspan="3">No Query</td>
+                 </tr>
+            <% } %>
+            
+         </table>
+     </div>
+  </div>
+        
+<%- include layouts/footer.ejs %>

@@ -1,0 +1,86 @@
+<%- include layouts/header.ejs %>
+
+
+	
+    
+    <div id="container" style="border: 1px solid red; background-color:"#84E8E6"></div>
+    <audio id="xyz" src="/sounds/facebook_ping.mp3" preload="auto"></audio>
+    
+    <script src="../socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+        // create a new websocket
+        var socket = io.connect('http://localhost:4300');
+        // on message received we print all the data inside the #container div
+        socket.on('notification', function (data) {
+        document.getElementById('xyz').play();
+        document.getElementById("container").innerHTML = "New Query Available!";
+      });
+    </script>
+	
+   <div class="page-data">
+   
+
+      
+      <div class="data-table">
+          <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">No</th>
+                <th>Query</th>
+                <th>Vote</th>
+                <th>Answer</th>
+                <th width="150px">Date Asked</th>
+                <th>User</th>
+                <th width="220px">Action</th>
+            </tr>
+                               
+                <% if(data.length){ 
+                                
+	                for(var i = 0;i < data.length;i++) { %>
+	                 
+	                <tr>
+	                    <td><%=(i+1)%></td>
+	                    <td class="question" width="300" style="overflow:hidden;"><%=data[i].query%></td>
+	                    <td align="center" padding="30" width="120">
+	                    	Up Votes: <%= data[i].totalUpVotes%> &nbsp;
+	                        <br />
+	                        Down Votes: <%= data[i].totalDownVotes%> &nbsp;
+	                    </td>
+	                    <% if(data[i].answer != null){ %>
+	                    <td  width="200" class="answer" ><%=data[i].answer%></td>
+	                    <% }else{%>
+	                    <td width="200" class="" >No answer has been posted by the user</td>
+	                    <% }%>
+	                    <td><%
+	                    	var d = data[i].dateModified;
+						    %>
+						<%=((d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds())
+	                    %></td>
+	                    <% if(data[i].anonymous == 1 && data[i].forceDisplay == 0){ %>
+	                    <td>Anonymous</td>
+	                    <% }else{%>
+	                    <td><%=data[i].userid%></td>
+	                    
+	                    <% }%>
+	                    <td align="center" width="50">
+	                    <div style="padding:10px;">
+	                    	<a class="viewButton" href="../pqueries/pview_answer/<%=data[i].id%>">&nbsp;&nbsp;&nbsp;View&nbsp;&nbsp;&nbsp;</a>
+	                    </div>
+	                    </td>
+	                </tr>
+	            
+	           <% }    
+               }else{ %>
+                 <tr>
+                    <td colspan="3">No Query</td>
+                 </tr>
+            <% } %>
+            
+         </table>
+     </div>
+  </div>
+  
+  <script src="http://localhost:4300/socket.io/socket.io.js"></script>
+  
+<%- include layouts/footer.ejs %>

@@ -1,0 +1,22 @@
+<%- include layouts/header.ejs %>
+
+
+	
+
+            
+      		
+      		<h1 style="color: #ccc; width:400px;">Browse Reviews by Topic</h1>
+			<table>
+			
+             <% for(var i=0; i < data.length; i++) { %>
+	  			<tr>
+	  			
+				<td width="400">
+					<button style="width:400px; padding:10px;" class="a-inside edit" onClick="location.href='../stopic/viewrate/<%=data[i].topic%>'"><%= data[i].topic %></button>
+				</td>
+				</tr>
+					
+	            <% } %>
+			</table>
+
+<%- include layouts/footer.ejs %>

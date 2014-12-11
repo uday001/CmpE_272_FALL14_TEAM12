@@ -1,0 +1,61 @@
+<%- include layouts/header.ejs %>
+
+
+	
+    
+   
+	
+   <div class="page-data">
+   
+     
+      
+      <div class="data-table">
+          <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">userId</th>
+                <th>Book Id</th>
+               
+                <th>Order Number</th>
+               
+                <th>Reserved Date</th>
+                <th>Return Date</th>
+                <th>Want to Delete?</th>
+               
+            </tr>
+                               
+                <% if(data.length){ 
+                                
+	                for(var i = 0;i < data.length;i++) { %>
+	                 
+	                <tr>
+	                    <td><%=data[i].userId%></td>
+	                    <td ><%=data[i].bookId%></td>
+	                   
+	                    <td align="center"><%=data[i].orderId%></td>
+	                    <td align="center"><%
+	                    	var d = data[i].start_time;
+						    %>
+						<%=((d.getMonth() + 1) + " / " + d.getDate() + " / " + d.getFullYear())
+	                    %></td>
+	                    <td align="center"><%
+	                    	var d = data[i].end_time;
+						    %>
+						<%=((d.getMonth() + 1) + " / " + d.getDate() + " / " + d.getFullYear())
+	                    %></td>
+	                    <td><a href="../orders/<%=data[i].bookId%>/<%=data[i].userId%>/delete">Delete order</a></td>
+	                   
+	                </tr>
+	            
+	           <% }    
+               }else{ %>
+                 <tr>
+                    <td colspan="6" align="center">No books are reserved</td>
+                 </tr>
+            <% } %>
+            
+         </table>
+     </div>
+  </div>
+  
+  
+<%- include layouts/footer.ejs %>

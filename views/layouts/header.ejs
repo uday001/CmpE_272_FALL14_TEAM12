@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+</html>
+    <head>
+        <title>CANVAS PLUS</title>
+        <link href="/../css/style.css" rel="stylesheet">
+        <link href="/../css/uday.css" rel="stylesheet">
+        <script type="text/javascript" src="/../js/all.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="page-header"><h2><%=page_title%></h2>
+            <%if(userType=="student"){%>
+			  <a href="/queries" class="a-inside edit">Question?<span class="round" style="vertical-align:center;"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  &nbsp;&nbsp;&nbsp;
+			  <a href="/stopic/topic" class="a-inside edit">Your Opinion Matters<span class="round"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  &nbsp;&nbsp;&nbsp;
+			  <a href="/sbooks" class="a-inside edit">Reserve Book<span class="round"></span></a>
+			<%}else{%>
+			  &nbsp;&nbsp;&nbsp;<a href="/pqueries" class="a-inside edit">Question?<span class="round" style="vertical-align:center;"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  &nbsp;&nbsp;&nbsp;<a href="/ptopic/topic" class="a-inside edit">Your Opinion Matters<span class="round"></span></a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  &nbsp;&nbsp;&nbsp;<a href="/pbooks" class="a-inside edit">Reserve Book<span class="round"></span></a></li>
+			<%}%>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="/logout" class="a-inside edit">Log out<span class="round"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+            <div class="page-container">

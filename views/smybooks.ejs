@@ -1,0 +1,64 @@
+<%- include layouts/header.ejs %>
+
+
+	
+    
+   
+	
+   <div class="page-data">
+   
+   
+      
+      <div class="data-table">
+          <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">User Id</th>
+                <th>Book Id</th>
+                
+                <th>Order Number</th>
+                <th>Booked Date</th>
+                <th>Return Date</th>
+                
+               
+            </tr>
+                             
+                <% if(data[0].orderIsSuccess==1){ 
+                                
+	                for(var i = 0;i < data.length;i++) { %>
+	                 
+	                <tr>
+	                    <td align="center"><%=data[i].userId%></td>
+	                    <td align="center"><%=data[i].bookId%></td>
+	                    
+	                    <td align="center"><%=data[i].orderId%></td>
+	                    <td align="center"><%
+	                    	var d = data[i].start_time;
+						    %>
+						<%=((d.getMonth() + 1) + " / " + d.getDate() + " / " + d.getFullYear())
+	                    %></td>
+	                    <td align="center"><%
+	                    	var d = data[i].end_time;
+						    %>
+						<%=((d.getMonth() + 1) + " / " + d.getDate() + " / " + d.getFullYear())
+	                    %></td>
+	                    
+	                   
+	                </tr>
+	            <h1> Your order is confirmed!! </h1>
+	           <% }    
+               }else{ %>
+                 <tr>
+                    <td colspan="5" align="center">You have already reserved another book! Please try again after you return your book</td>
+                 </tr>
+            <% } %>
+            
+         </table>
+         <br>
+         <div class="data-btn">
+          <button onClick="DeletePreviousOrder();">View My Previous Orders</button>
+      </div>
+     </div>
+  </div>
+  
+  
+<%- include layouts/footer.ejs %>

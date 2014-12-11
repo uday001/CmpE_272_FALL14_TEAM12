@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css" >
+   
+    <link rel='stylesheet' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css' />
+     <link rel='stylesheet' href='/stylesheets/entry.css' />
+     
+  </head>
+  <body>
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header" class="col-md-3">
+     <a class="navbar-brand" href="/"><img src="/stylesheets/canvas.logo.png" height="50" width="50"></a> 
+     <h1 style="color:pink;"> Welcome to CanvasPlus</h1> 
+  </div>
+  <div class="col-md-6">
+        <form class="navbar-form" role="search" action="search">
+        <div class="input-group">
+            
+        </div>
+        </form>
+    </div>
+   <div class="col-md-4">
+   
+    </div>
+  
+</nav>
+
+</head>
+
+
+	
+</form>
+</br>
+</br>
+<div class="ballMenuContainer">
+<ul>
+<%if(userType=="student"){%>
+  <li><a href="/queries" class="round green">Question?<span class="round" style="vertical-align:center;">Post it anonymously!!</span></a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <li><a href="/stopic/topic" class="round red">Your Opinion Matters<span class="round">Rate and Review!! Tell us what you think!</span></a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <li><a href="/sbooks" class="round yellow">Reserve Book<span class="round">Get the book for free</span></a></li>
+<%}else{%>
+  <li><a href="/pqueries" class="round green">Question?<span class="round" style="vertical-align:center;">Post it anonymously!!</span></a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <li><a href="/ptopic/topic" class="round red">Your Opinion Matters<span class="round">Rate and Review!! Tell us what you think!</span></a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <li><a href="/pbooks" class="round yellow">Reserve Book<span class="round">Get the book for free</span></a></li>
+<%}%>
+</ul> 
+</form>
+</div>
+
+</div>

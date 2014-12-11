@@ -1,0 +1,69 @@
+<%- include layouts/header.ejs %>
+
+		
+
+<form method="get" action="/stopic/add/<%=topic%>">
+<input type="submit" name="submit" value="Want to Rate and review">
+</form>
+      </br>
+      
+     
+      
+      <div class="data-table">
+          <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">No</th>
+                <th>topic</th>
+                <th>rate</th>
+               	<th>Votes</th>
+               	<th>review</th>
+                <th width="150px">Date Asked</th>
+                 
+                <th>User</th>
+                
+            </tr>
+                               
+                <% if(data.length){ 
+                                
+	                for(var i = 0;i < data.length;i++) { %>
+	                 
+	                <tr>
+	                    <td><%=(i+1)%></td>
+	                    <td class="question" style="overflow:hidden; max-width:300px;"><%=data[i].topic%></td>
+	                    <td class="question" style="overflow:hidden; max-width:300px;"><%=data[i].rate%></td>
+	                 <td width="200" align="center" padding="30">
+	                 
+	                 <button style="width:150px;" class="a-inside edit" onClick="location.href='/stopic/vote_up/<%=data[i].id%>'"><%= data[i].totalUpVotes%> &nbsp; Vote Up!</button>
+	                 <button style="width:150px;" class="a-inside edit" onClick="location.href='/stopic/vote_down/<%=data[i].id%>'"><%= data[i].totalDownVotes%> &nbsp; Vote Down!</button>
+	                  
+	                  </td>
+	                    <% if(data[i].review != null){ %>
+	                    <td width="400" class="answer" ><%=data[i].review%></td>
+	                    <% }else{%>
+	                    <td class="answer" width="200" >No Review Avaialble</td>
+	                    <% }%>
+	                    <td width="20"><%
+	                    	var d = data[i].dateModified;
+						    %>
+						<%=((d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds())
+	                    %></td>
+	                    <% if(data[i].anonymous == 0){ %>
+	                    <td width="20"><%=data[i].userid%></td>
+	                    <% }else{%>
+	                    <td width="20">Anonymous</td>
+	                    <% }%>
+	                    
+	                </tr>
+	            
+	           <% }    
+               }else{ %>
+                 <tr>
+                    <td colspan="3">No Reviews Available</td>
+                 </tr>
+            <% } %>
+            
+         </table>
+     </div>
+  
+  
+  <%- include layouts/footer.ejs %>

@@ -1,0 +1,35 @@
+header
+{
+  width : 100%;
+}
+
+header h1
+{
+	 color : #88000F;
+	
+	margin : 0px;
+	padding : 15px 0px;
+}
+
+h1:first-letter
+{
+  font-size:60px;
+  font-family: serif;
+} 
+
+.header-top
+{
+  background: none repeat scroll 0 0 #000000;
+}
+
+.header-bottom img
+{
+  height: 56px;
+  margin-top: 5px;
+}
+
+.container a:hover
+{
+  text-decoration: none;
+}
+

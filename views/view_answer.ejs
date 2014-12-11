@@ -1,0 +1,44 @@
+<%- include layouts/header.ejs %>
+
+        <div class="page-data">
+            
+            
+                <table cellpadding="11">
+                 <tr>
+                    <td class="label" valign="top">Query</td><td valign="top">: <%=data[0].query%></td>
+                </tr>
+                <tr>
+                    <td class="label" valign="top">Answer: </td>
+                    <% if(data[0].answer != null){ %>
+                    <td class="answer" ><%=data[0].answer%></td>
+                    <% }else{%>
+                    <td class="answer" >No answer has been posted by the questioner</td>
+                    <% }%>
+                </tr>
+                <tr>
+                <td></td>
+                	<td>
+                		<div id="mydiv">
+	                    	<button style="width:150px;" class="a-inside edit" onClick="location.href='../vote_up/<%=data[0].id%>'"><%= data[0].totalUpVotes%> &nbsp; Vote Up!</button>
+	                        &nbsp;
+	                        &nbsp; <button style="width:150px;" class="a-inside delete" onClick="location.href='../vote_down/<%=data[0].id%>'"><%= data[0].totalDownVotes%> &nbsp; Vote Down!</button>
+	                    </div>
+                	</td>
+                </tr>
+                <tr>
+                <td></td>
+                	<td>
+                		<!--
+                		<div id="mydiv">
+	                    	<a class="viewButton" href="/report/<%=data[0].id%>">&nbsp;&nbsp;&nbsp;Report&nbsp;&nbsp;&nbsp;</a>
+                    		<a class="viewButton" href="/unreport/<%=data[0].id%>">&nbsp;&nbsp;&nbsp;Unreport&nbsp;&nbsp;&nbsp;</a>
+                    	</div>
+                    	-->
+                	</td>
+                </tr>
+                </table>
+            
+            
+        </div>
+        
+<%- include layouts/footer.ejs %>

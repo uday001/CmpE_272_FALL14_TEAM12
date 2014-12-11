@@ -1,0 +1,24 @@
+<%- include layouts/header.ejs %>
+
+
+	
+
+            <div class="data-btn">
+          		<button onClick="location.href='/ptopic/add_topic'">+ Add Topic</button>
+      		</div>
+      		<br />
+      		<h1 style="color: #ccc; width:400px;">Browse Reviews by Topic</h1>
+			<table>
+			
+             <% for(var i=0; i < data.length; i++) { %>
+	  			<tr>
+	  			
+				<td width="400">
+					<button style="width:400px; padding:10px;" class="a-inside edit" onClick="location.href='../ptopic/viewrate/<%=data[i].topic%>'"><%= data[i].topic %></button>
+				</td>
+				</tr>
+					
+	            <% } %>
+			</table>
+
+<%- include layouts/footer.ejs %>

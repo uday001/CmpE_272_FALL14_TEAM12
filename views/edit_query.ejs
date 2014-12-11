@@ -1,0 +1,28 @@
+<%- include layouts/header.ejs %>
+
+        <div class="page-data">
+            
+            <form method="post" action="/queries/save_edit/<%=data[0].id%>">
+                <table cellpadding="11">
+                <tr>
+                    <td class="label">Anonymous</td><td>: <input type="checkbox" name="anonymous" value="anonymous"></td>
+                 </tr>
+                 <tr>
+                    <td class="label" valign="top">Query</td><td valign="top">: <%=data[0].query%></td>
+                </tr>
+                <tr>
+                    <td class="label" valign="top">Answer</td><td valign="top">: <textarea name="answer" required cols="100" rows="15"><%=data[0].answer%></textarea></td>
+                </tr>
+                <tr>
+                    <td class="label"></td>
+                    <td>
+                        &nbsp; <input type="submit" name="submit" value="Save">
+                       <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
+                    </td>
+                 </tr>
+                </table>
+            </form>
+            
+        </div>
+        
+<%- include layouts/footer.ejs %>

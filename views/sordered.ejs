@@ -1,0 +1,55 @@
+<%- include layouts/header.ejs %>
+
+
+	
+    
+   
+	
+   <div class="page-data">
+   
+   
+      
+      <div class="data-table">
+          <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">Book Id</th>
+                <th>Quantity Available</th>
+                <th>Author</th>
+                <th>Description</th>
+               
+                <th>Book Name</th>
+                <th>Book Reservation</th>
+               
+            </tr>
+                               
+                <% if(data.length){ 
+                                
+	                for(var i = 0;i < data.length;i++) { %>
+	                 
+	                <tr>
+	                    <td><%=data[i].bookId%></a></td>
+	                    <td><%=data[i].quantity%></td>
+	                    <td><%=data[i].author%></td>
+	                    <td><%=data[i].description%></td>
+	                    <td><%=data[i].bookName%></td>
+	                    <td><a href="../order/<%=data[i].bookId%>/reserve">RESERVE NOW!</a></td>
+	                   
+	                </tr>
+	            
+	           <% }    
+               }else{ %>
+                 <tr>
+                    <td colspan="3">No books</td>
+                 </tr>
+            <% } %>
+            
+         </table>
+         <br>
+         <div class="data-btn">
+          <button onClick="DeletePreviousOrder();">View My Previous Orders</button>
+      </div>
+     </div>
+  </div>
+  
+  
+<%- include layouts/footer.ejs %>

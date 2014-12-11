@@ -1,0 +1,104 @@
+<%- include layouts/header.ejs %>
+
+
+	
+    
+    <div id="container" style="border: 1px solid red; background-color:"#84E8E6"></div>
+    <audio id="xyz" src="/sounds/facebook_ping.mp3" preload="auto"></audio>
+    <script src="../socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+        // create a new websocket
+        var socket = io.connect('http://localhost:4300');
+        // on message received we print all the data inside the #container div
+        socket.on('notification', function (data) {
+        document.getElementById('xyz').play();
+        document.getElementById("container").innerHTML = "New Query Available!";
+      });
+    </script>
+	
+   <div class="page-data">
+   
+      <div class="data-btn">
+          <button onClick="addUser();">+ Add</button>
+      </div>
+      
+      <div class="data-table">
+         
+            <% if(data.length){ 
+                               
+	                for(var i = 0;i < data.length;i++) { %>
+	                
+	                <table style="margin:20px; color:#555; " cellpadding="5">
+	                <tr>
+	                <td colspan=2 width="50">
+	                	<span style="font: bold italic 35px/1.5 Helvetica, Verdana, sans-serif;">
+	                    <%=(i+1)%>
+	                    </span>
+	                 </td>
+	                 <td>
+	                 	<div id="mydiv"><b>Question :</b> <%=data[i].query%></div>
+	                 </td>
+	                 </tr>
+	                 <tr>
+	                 	<td width="35">
+	                 		<button style="width:50px; padding:10px 5px; background-color:#1a82f7;"  onClick="location.href='../queries/vote_up/<%=data[i].id%>'">&#8679; <%= data[i].totalUpVotes%></button>	
+	                 	</td>
+	                 	<td width="35">
+	                 		<button style="width:50px; padding:10px 5px; background-color:#1a82f7;"  onClick="location.href='../queries/vote_down/<%=data[i].id%>'">&#8681; <%= data[i].totalDownVotes%></button>
+	                 	</td>
+	                 	<td>
+	                 		<div id="mydiv">
+	                    		<% if(data[i].answer != null){ %>
+	                    		<b>Answer: </b><%=data[i].answer%>
+	                    		<% }else{%>
+	                    		No answer has been posted yet.
+	                    		<% }%>
+	                    	</div>
+	                 	</td>
+	                 </tr>
+	                 <tr>
+	                 <td colspan=2>
+	                 	
+                    	<% if(data[i].userid == userid) { %>
+                        <button style="width:115px; padding:10px 5px; background-color:#1a82f7;" onClick="location.href='../queries/edit/<%=data[i].id%>'">Edit/View</button>
+                        <% } else {%>
+                        <button style="width:115px; padding:10px 5px; background-color:#1a82f7;" onClick="location.href='../queries/view_answer/<%=data[i].id%>'">&nbsp;&nbsp;&nbsp;View&nbsp;&nbsp;&nbsp;</button>
+                        <% }%>
+	                 </td>
+	                 <td>
+	                 	<div id="mydiv">
+	                    <b>Date Modified :</b> 
+	                    <%var d = data[i].dateModified;%>
+						<%=((d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds())
+	                    %>
+	                    <br />
+	                    <b>Asked By: </b> 
+	                    <% if(data[i].anonymous == 1 && data[i].forceDisplay == 0){ %>
+	                    Anonymous
+	                    <% }else{%>
+	                    <%=data[i].userid%>
+	                    <% }%>
+	                    </div>
+	                 </td>
+	                 
+	                 </tr>
+	              </table>
+	                
+	            
+	           <% }  %>
+	           
+	           <%
+               }else{ %>
+                 <h3>No Query</h3>
+                 
+            <% } %>
+            
+         
+     </div>
+  </div>
+  
+  <script src="http://localhost:4300/socket.io/socket.io.js"></script>
+  
+<%- include layouts/footer.ejs %>

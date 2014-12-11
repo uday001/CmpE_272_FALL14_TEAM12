@@ -1,0 +1,55 @@
+<%- include layouts/header.ejs %>
+
+      
+      <div class="data-table">
+          
+            <% if(data.length){ 
+                            
+	                for(var i = 0;i < data.length;i++) { %>
+	                
+	                <table style="margin:10px;"cellpadding="7" cellspacing="7">
+	                <tr>
+	                   <td width="120"><b> <%=(i+1)%></b></td>
+	                   <td> By: 
+		                   	<% if(data[i].anonymous == 0){ %>
+		                   	<%=data[i].userid%>
+		                    <% }else{%>
+		                    Anonymous
+		                    <% }%>
+	                   </td>
+	                 </tr>
+	                 <tr>
+	                 <td>
+	                 	<b>Rating:</b>
+	                 </td>
+	                 <td>
+	                 	<%=data[i].rate%>
+	                 </td>
+	                 </tr>
+	                 <tr>
+	                 <td>
+	                 	<b>Review:</b> 
+	                 	</td>
+	                 	<td>
+	                 	<%=data[i].review%>
+	                 	<br />
+	                 	<%
+	                    	var d = data[i].dateModified;
+						    %>
+						<%=((d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds())
+	                    %>
+	                 </td>
+	                 </tr>
+	                 
+	                 
+	            	</table>
+	           <% }    
+               }else{ %>
+               No Review Available
+            <% } %>
+            
+         
+     </div>
+  
+  
+<%- include layouts/footer.ejs %>
